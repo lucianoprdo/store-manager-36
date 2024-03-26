@@ -1,4 +1,4 @@
-const { getAllProducts } = require('../controllers/productController');
+const { getAllProducts } = require('../controllers/product.controller');
 
 async function findAll() {
   const products = await getAllProducts();
