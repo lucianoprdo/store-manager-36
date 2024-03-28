@@ -11,15 +11,15 @@ const { productsController } = require('../../../src/controllers/index');
 const { products, createProduct } = require('../mocks/products.mock');
 
 describe('unitTests - PRODUCT CONTROLLER', function () {
-  beforeEach(function () {
-    this.req = { params: {}, body: {} };
-    this.res = {
-      status: sinon.stub().returnsThis(),
-      json: sinon.stub(),
-    };
-  });
+  // beforeEach(function () {
+  //   this.req = { params: {}, body: {} };
+  //   this.res = {
+  //     status: sinon.stub().returnsThis(),
+  //     json: sinon.stub(),
+  //   };
+  // });
 
-  it('PRODUCT CONTROLLERRetrieves all products successfully', async function () {
+  it('PRODUCT CONTROLLER - Retrieves all products successfully', async function () {
     sinon
       .stub(productService, 'findAll')
       .resolves({ status: 200, data: products });
