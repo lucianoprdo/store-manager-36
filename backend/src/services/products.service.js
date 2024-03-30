@@ -13,4 +13,9 @@ async function findById(id) {
   if (product) return { status: 200, data: product };
 }
 
-module.exports = { findAll, findById };
+async function create(name) {
+  const product = await createProduct(name);
+  if (product) return { status: 201, data: { id: product, name } };
+}
+
+module.exports = { findAll, findById, create };

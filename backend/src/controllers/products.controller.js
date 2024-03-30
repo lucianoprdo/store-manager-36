@@ -14,7 +14,14 @@ async function getProductByIdController(req, res) {
   res.status(200).json(product.data);
 }
 
+async function createProductController(req, res) {
+  const { name } = req.body;
+  const { data } = await service.create(name);
+  res.status(201).json(data);
+}
+
 module.exports = {
   getAllProductsController,
   getProductByIdController,
+  createProductController,
 };
