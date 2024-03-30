@@ -5,4 +5,9 @@ async function findAll() {
   return { status: 200, data: products };
 }
 
-module.exports = { findAll };
+async function findById(id) {
+  const product = await getProductById(id);
+  if (product) return { status: 200, data: product };
+}
+
+module.exports = { findAll, findById };
