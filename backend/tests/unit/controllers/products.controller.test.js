@@ -5,20 +5,12 @@ const sinonChai = require('sinon-chai');
 
 chai.use(sinonChai);
 
-const { productService } = require('../../../src/services/index');
-const { productsController } = require('../../../src/controllers/index');
+const { productService } = require('../../../src/services');
+const { productsController } = require('../../../src/controllers');
 
 const { products, createProduct } = require('../mocks/products.mock');
 
 describe('unitTests - PRODUCT CONTROLLER', function () {
-  // beforeEach(function () {
-  //   this.req = { params: {}, body: {} };
-  //   this.res = {
-  //     status: sinon.stub().returnsThis(),
-  //     json: sinon.stub(),
-  //   };
-  // });
-
   it('PRODUCT CONTROLLER - Retrieves all products successfully', async function () {
     sinon
       .stub(productService, 'findAll')
