@@ -8,7 +8,8 @@ const getAllProducts = async () => {
 };
 
 const getProductById = async (id) => {
-  const [[product]] = await connection.execute(
+  const [product] = await connection.execute(
+    //foi retirado uma [] de product
     'SELECT * FROM products WHERE id = ?',
     [id],
   );
