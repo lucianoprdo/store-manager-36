@@ -11,7 +11,7 @@ const productsController = require('../../../src/controllers/products.controller
 const { products, createProduct } = require('../mocks/products.mock');
 
 describe('Performing tests - PRODUCT CONTROLLER', function () {
-  it('Retrieves all products successfully', async function () {
+  it('PRODUCT CONTROLLER - Retrieves all products successfully', async function () {
     sinon
       .stub(productService, 'findAll')
       .resolves({ status: 200, data: products });

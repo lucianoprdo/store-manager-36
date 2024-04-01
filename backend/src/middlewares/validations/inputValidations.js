@@ -18,7 +18,6 @@ const validateLength = (req, res, next) => {
 
 const inputValidations = (req, res, next) => {
   validateName(req, res, () => {
-    // Encadeia os middlewares usando uma função de callback
     validateLength(req, res, next);
   });
 };
