@@ -5,10 +5,8 @@ const sinonChai = require('sinon-chai');
 
 chai.use(sinonChai);
 
-const { productService } = require('../../../src/services/products.service');
-const {
-  productsController,
-} = require('../../../src/controllers/products.controller');
+const productService = require('../../../src/services/products.service');
+const productsController = require('../../../src/controllers/products.controller');
 
 const { products, createProduct } = require('../mocks/products.mock');
 
