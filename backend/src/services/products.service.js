@@ -1,7 +1,8 @@
 const {
   getAllProducts,
   getProductById,
-} = require('../controllers/products.controller');
+  createProduct,
+} = require('../models/product.model');
 
 async function findAll() {
   const products = await getAllProducts();
@@ -18,4 +19,8 @@ async function create(name) {
   if (product) return { status: 201, data: { id: product, name } };
 }
 
-module.exports = { findAll, findById, create };
+module.exports = {
+  findAll,
+  findById,
+  create,
+};

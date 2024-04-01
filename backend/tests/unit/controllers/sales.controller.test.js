@@ -10,7 +10,7 @@ const { salesController } = require('../../../src/controllers');
 
 const { salesDB, salesById } = require('../mocks/sales.mock');
 
-describe('unitTests - SALES CONTROLLER', function () {
+describe('Performing tests - SALES CONTROLLER', function () {
   beforeEach(function () {
     sinon.restore();
   });
