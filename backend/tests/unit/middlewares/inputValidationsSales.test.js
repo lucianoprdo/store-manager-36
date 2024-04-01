@@ -5,12 +5,12 @@ const {
 } = require('../../../src/middlewares/validations/inputValidationSale');
 const { productModel } = require('../../../src/models');
 
-describe('Input Validations for Sales', function () {
+describe('Performing tests - INPUT VALIDATIONS', function () {
   beforeEach(function () {
     sinon.restore();
   });
 
-  it('should call next if productId and quantity are valid', function () {
+  it('PRODUCTS - Should call next if productId and quantity are valid', function () {
     const req = { body: [{ productId: 1, quantity: 2 }] };
     const res = {};
     const next = sinon.spy();
@@ -20,7 +20,7 @@ describe('Input Validations for Sales', function () {
     sinon.assert.calledOnce(next);
   });
 
-  it('should return 400 if productId is missing', function () {
+  it('PRODUCTS - Should return 400 if productId is missing', function () {
     const req = { body: [{ quantity: 2 }] };
     const res = { status: sinon.stub().returnsThis(), json: sinon.spy() };
     const next = sinon.spy();
@@ -32,7 +32,7 @@ describe('Input Validations for Sales', function () {
     sinon.assert.notCalled(next);
   });
 
-  it('should return 422 if quantity is less than 1', function () {
+  it('PRODUCTS - Should return 422 if quantity is less than 1', function () {
     const req = { body: [{ productId: 1, quantity: 0 }] };
     const res = { status: sinon.stub().returnsThis(), json: sinon.spy() };
     const next = sinon.spy();
@@ -44,7 +44,7 @@ describe('Input Validations for Sales', function () {
     sinon.assert.notCalled(next);
   });
 
-  it('should return an array of products for valid sale data', async function () {
+  it('PRODUCTS - Should return an array of products for valid sale data', async function () {
     const saleData = [{ productId: 1 }, { productId: 2 }];
     const products = [
       { id: 1, name: 'Product 1' },
