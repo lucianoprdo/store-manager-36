@@ -1,9 +1,7 @@
 const router = require('express').Router();
-const salesController = require('../controllers');
-const {
-  inputValidationsSale,
-} = require('../middlewares/validations/inputValidationsSale');
+const salesController = require('../controllers/sales.controller');
 
-router.get('/', salesController.getAllProductsController);
+router.get('/', salesController.getAllSalesController);
+router.get('/:id', salesController.getSaleByIdController);
 
 module.exports = router;
