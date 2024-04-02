@@ -12,7 +12,33 @@ async function getSaleByIdController(req, res) {
   return res.status(200).json(sale);
 }
 
+sync function createSaleController(req, res) {
+  const products = req.body;
+
+  const sale = await validateSaleDataProductId(products);
+
+  if (sale.includes(undefined)) {
+    return res.status(404).json({ message: 'Product not found' });
+  }
+  const saleId = await service.createSaleService(products);
+
+  const itemsSold = products.map((product) => ({
+    productId: product.productId,
+    quantity: product.quantity,
+  }));
+
+  return res.status(201).json({ id: saleId, itemsSold }); // error: res.status não é uma função
+}
+
+const deleteSale = async (req, res) => {
+  const { id } = req.params;
+  const data = await service.deleteSale(id);
+  return res.status(204).json(data);
+};
+
 module.exports = {
   getAllSalesController,
   getSaleByIdController,
+  createSaleController,
+  deleteSale,
 };
