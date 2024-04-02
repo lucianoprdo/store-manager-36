@@ -12,9 +12,10 @@ const { salesDB, salesById } = require('../mocks/sales.mock');
 
 describe('Performing tests - SALES CONTROLLER', function () {
   it('SALES CONTROLLER - Retrieves all sales successfully', async function () {
-    sinon
-      .stub(salesService, 'findAll')
-      .resolves({ status: 200, data: salesDB });
+    sinon.stub(salesService, 'findAll').resolves({
+      status: 200,
+      data: salesDB,
+    });
 
     const req = { params: {}, body: {} };
     const res = {
@@ -23,7 +24,6 @@ describe('Performing tests - SALES CONTROLLER', function () {
     };
 
     await salesController.getAllSalesController(req, res);
-
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(salesDB);
   });
