@@ -1,4 +1,9 @@
-const { getAllSales, getSaleById } = require('../models/sale.model');
+const {
+  getAllSales,
+  getSaleById,
+  createSale,
+  deleteSaleModel,
+} = require('../models/sales.model');
 
 async function findAll() {
   const sales = await getAllSales();

@@ -1,8 +1,4 @@
-const {
-  getAllProducts,
-  getProductById,
-  createProduct,
-} = require('../models/product.model');
+const { getAllProducts, getProductById, createProduct } = require('../models/product.model');
 
 async function findAll() {
   const products = await getAllProducts();
@@ -14,7 +10,7 @@ async function findById(id) {
   if (product) return { status: 200, data: product };
 }
 
-async function create(name) {
+async function create(name) { 
   const product = await createProduct(name);
   if (product) return { status: 201, data: { id: product, name } };
 }
