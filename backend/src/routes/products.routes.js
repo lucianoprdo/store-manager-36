@@ -1,8 +1,6 @@
 const router = require('express').Router();
-const {
-  inputValidations,
-} = require('../middlewares/validations/inputValidations');
-const productsController = require('../controllers/products.controller');
+const { inputValidations } = require('../middlewares/validations/inputValidations');
+const { productsController } = require('../controllers');
 
 router.get('/', productsController.getAllProductsController);
 router.get('/:id', productsController.getProductByIdController);
