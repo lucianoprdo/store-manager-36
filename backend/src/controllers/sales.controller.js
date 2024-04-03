@@ -1,18 +1,19 @@
-const { findAll, findById } = require('../services/sales.service');
+const { validateSaleDataProductId } = require('../middlewares/validations/inputValidationSale');
+const service = require('../services/sales.service');
 
 async function getAllSalesController(_req, res, _next) {
-  const sales = await findAll();
+  const sales = await service.findAll();
   if (!sales) return res.status(sales.status).json();
   res.status(200).json(sales.data);
 }
 
 async function getSaleByIdController(req, res) {
-  const sale = await findById(req.params.id);
+  const sale = await service.findById(req.params.id);
   if (sale.message) return res.status(404).json(sale);
   return res.status(200).json(sale);
 }
 
-sync function createSaleController(req, res) {
+async function createSaleController(req, res) {
   const products = req.body;
 
   const sale = await validateSaleDataProductId(products);

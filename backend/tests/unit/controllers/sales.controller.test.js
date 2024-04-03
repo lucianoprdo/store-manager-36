@@ -3,7 +3,6 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 
-
 chai.use(sinonChai);
 
 const salesService = require('../../../src/services/sales.service');
