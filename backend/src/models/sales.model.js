@@ -50,5 +50,4 @@ module.exports = {
   getSaleById,
   createSale,
   deleteSaleModel,
-  update,
 };
