@@ -1,10 +1,8 @@
 const { productModel } = require('../../models');
 
-const hasValidProductId = (item) =>
-  'productId' in item && item.productId !== undefined;
+const hasValidProductId = (item) => 'productId' in item && item.productId !== undefined;
 
-const findInvalidProductId = (productId) =>
-  productId.find((item) => !hasValidProductId(item));
+const findInvalidProductId = (productId) => productId.find((item) => !hasValidProductId(item));
 
 const validateProductId = (req, res, next) => {
   const productId = req.body;
@@ -17,13 +15,10 @@ const validateProductId = (req, res, next) => {
   next(); // Chama next() apenas se não houver erros
 };
 
-const hasValidQuantity = (item) =>
-  'quantity' in item &&
-  item.quantity !== undefined &&
-  Number(item.quantity) >= 1;
+const hasValidQuantity = (item) => 'quantity' in item && item
+  .quantity !== undefined && Number(item.quantity) >= 1;
 
-const findInvalidQuantity = (quantity) =>
-  quantity.find((item) => !hasValidQuantity(item));
+const findInvalidQuantity = (quantity) => quantity.find((item) => !hasValidQuantity(item));
 
 const validateQuantity = (req, res, next) => {
   const quantity = req.body;
@@ -31,10 +26,8 @@ const validateQuantity = (req, res, next) => {
 
   if (invalidQuantity) {
     const status = 'quantity' in invalidQuantity ? 422 : 400;
-    const message =
-      status === 422
-        ? '"quantity" must be greater than or equal to 1'
-        : '"quantity" is required';
+    const message = status === 422
+      ? '"quantity" must be greater than or equal to 1' : '"quantity" is required';
     return res.status(status).json({ message });
   }
 
@@ -42,8 +35,7 @@ const validateQuantity = (req, res, next) => {
 };
 
 const inputValidationsSales = (req, res, next) => {
-  validateProductId(req, res, () => {
-    // Encadeia os middlewares usando uma função de callback
+  validateProductId(req, res, () => { // Encadeia os middlewares usando uma função de callback
     validateQuantity(req, res, next);
   });
 };
